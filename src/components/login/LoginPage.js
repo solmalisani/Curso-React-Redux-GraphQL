@@ -1,7 +1,16 @@
 import React from 'react'
 import styles from './login.module.css'
+import { connect } from 'react-redux'
+import { doGoogleLoginAction } from '../../redux/userDuck'
 
-export default function LoginPage() {
+function LoginPage({fetching, doGoogleLoginAction}) {
+
+    function doLogin(){
+        doGoogleLoginAction()
+    }
+
+    if (fetching) return <h2>Cargando..</h2>
+
     return (
         <div className={styles.container}>
             <h1>
@@ -10,7 +19,7 @@ export default function LoginPage() {
             <h1>
                 Cierra tu sesión
             </h1>
-            <button>
+            <button onClick={doLogin}>
                 Iniciar
             </button>
             <button>
@@ -19,3 +28,11 @@ export default function LoginPage() {
         </div>
     )
 }
+
+function mapState({user: {fetching}}){
+    return {
+        fetching
+    }
+}
+
+export default connect(mapState, {doGoogleLoginAction})(LoginPage)
