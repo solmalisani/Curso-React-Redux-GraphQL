@@ -1,4 +1,3 @@
-import axios from 'axios'
 import ApolloClient, {gql} from 'apollo-boost'
 
 //constantes
@@ -8,7 +7,7 @@ let initialData = {
     current: {}
 }
 
-let URL = "https://rickandmortyapi.com/api/character"
+//let URL = "https://rickandmortyapi.com/api/character"
 
 let client = new ApolloClient({
     uri:"https://rickandmortyapi.com/graphql"

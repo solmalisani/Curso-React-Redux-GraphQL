@@ -14,9 +14,13 @@ let firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-
+  
   export function loginWithgoogle(){
       let provider = new firebase.auth.GoogleAuthProvider()
       return firebase.auth().signInWithPopup(provider)
       .then(snap=>snap.user)
   }
+
+  export function signOutGoogle(){
+    firebase.auth().signOut()
+}
