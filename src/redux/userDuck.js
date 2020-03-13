@@ -29,12 +29,8 @@ export default function reducer(state = initialData, action){
 }
 
 //aux
-function saveStorage(data) {
-    //localStorage.storage = JSON.stringify(data)
-    localStorage.storage = data
-
-    console.log(data)
-    console.log(localStorage)
+function saveStorage(storage) {
+    localStorage.storage = JSON.stringify(storage)
 }
 
 //actions
@@ -66,7 +62,12 @@ export let doGoogleLoginAction = () => (dispatch, getState) => {
         .then(user =>{
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: {...user}
+                payload: {
+                    uid: user.uid,
+                    displayName: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL
+                }
             })
             saveStorage(getState())
         })

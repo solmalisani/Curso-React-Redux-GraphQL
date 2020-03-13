@@ -17,7 +17,7 @@ export default function generateStore(){
     )
     //para tener los datos al inicio
     getCharactersAction()(store.dispatch, store.getState)
-    restoreSessionAction(store.dispatch)
+    restoreSessionAction()(store.dispatch)
     
     return store
 }
